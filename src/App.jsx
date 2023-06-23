@@ -5,11 +5,13 @@ import Products from "./pages/Products";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from './pages/Cart';
 import ErrorPage from "./pages/ErrorPage";
+import Header from "./components/Header";
 
 function App() {
 
   return (
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />}/>
