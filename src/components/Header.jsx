@@ -24,7 +24,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-50 rounded-box w-52"
           >
             <li>
               <Link to='/'>HOME</Link>
@@ -38,7 +38,7 @@ const Header = () => {
             <li>
               <Link to='/contact'>CONTACT</Link>
             </li>
-            <button className='border'>Login</button>
+            <button className='btn border bg-orange-400 mt-2 rounded-md hover:bg-orange-500 font-semibold md:absolute md:-left-full text-white'>LOG IN</button>
           </ul>
         </div>
       </div>
@@ -49,7 +49,7 @@ const Header = () => {
       </div>
       <div className="navbar-end mr-5">
         <div>
-            <button className='bg-orange-400 px-8 py-1.5 rounded-md mr-5 uppercase font-semibold text-gray-700 hover:bg-orange-500 absolute -left-full sm:relative sm:left-0'>Log in</button>
+            <button className='btn bg-orange-400 px-10 rounded-md mr-5 uppercase font-semibold text-white hover:bg-orange-500 absolute -left-full sm:relative sm:left-0'>Log in</button>
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -73,13 +73,13 @@ const Header = () => {
           </label>
           <div
             tabIndex={0}
-            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+            className="mt-3 card card-compact dropdown-content w-52 bg-orange-50 shadow absolute z-50"
           >
             <div className="card-body">
               <span className="font-bold text-lg">8 Items</span>
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <button className="btn bg-orange-400 w-full hover:bg-orange-500 text-white">View cart</button>
               </div>
             </div>
           </div>
