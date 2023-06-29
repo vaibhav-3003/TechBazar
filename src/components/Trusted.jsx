@@ -2,7 +2,7 @@ import React from 'react'
 
 const Trusted = () => {
   return (
-    <div className="w-full py-10 bg-orange-100 flex flex-col justify-center items-center mb-10">
+    <div className="w-full py-10 bg-orange-100 flex flex-col justify-center items-center mb-16">
       <div className="w-full mb-10 grayscale">
         <h3 className="text-center text-gray-500 text-2xl font-semibold">
           Trusted By 1000+ Companies
