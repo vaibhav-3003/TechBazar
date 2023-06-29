@@ -6,7 +6,7 @@ import {RiSecurePaymentLine} from 'react-icons/ri';
 
 const Services = () => {
   return (
-    <div className="w-full py-10">
+    <div className="w-full py-10 mb-10">
       <div className="w-full md:w-11/12 lg:w-4/5 mx-auto grid grid-rows-4 grid-cols-1 md:grid-rows-2 md:grid-cols-4 gap-8 px-5">
         <div className="md:row-span-2 bg-orange-100 flex justify-center items-center flex-col py-20 rounded-lg shadow-lg">
           <div className="bg-white p-2 rounded-full mb-2">
