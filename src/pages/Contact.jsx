@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="w-1/2 h-full absolute -left-full lg:relative lg:left-0">
         <img src="./images/map.jpg" alt="" className="h-full bg-cover" />
       </div>
-      <div className="w-11/12 md:w-3/4 rounded-xl lg:w-1/2 mt-24 bg-orange-50 h-fit mx-auto lg:h-fit lg:bg-white lg:rounded-none lg:mt-16">
+      <div className="w-11/12 md:w-3/4 rounded-xl lg:w-1/2 mt-24 h-fit mx-auto lg:h-fit lg:bg-white lg:rounded-none lg:mt-16">
         <div className="w-full mt-4 lg:mt-0 lg:py-4 py-4">
           <h2 className="text-center text-3xl md:text-5xl text-gray-700 font-bold mb-4">
             Contact Us
@@ -17,7 +17,7 @@ const Contact = () => {
           </p>
         </div>
         <div className="w-full md:w-3/4 mx-auto px-4 py-2">
-          <form action="">
+          <form action="https://formspree.io/f/xeqbjkno" method="POST">
             <label
               htmlFor="username"
               className="block text-md text-gray-400 mb-2"
@@ -26,6 +26,9 @@ const Contact = () => {
             </label>
             <input
               type="text"
+              name="username"
+              autoComplete="off"
+              required
               className="border w-full block py-1.5 px-2 outline-none shadow-sm rounded-md focus:shadow-md focus:shadow-orange-400 mb-4"
             />
             <label
@@ -35,7 +38,10 @@ const Contact = () => {
               Email
             </label>
             <input
-              type="text"
+              type="email"
+              name="email"
+              autoComplete="off"
+              required
               className="border w-full block py-1.5 px-2 outline-none shadow-sm rounded-md focus:shadow-md focus:shadow-orange-400 mb-4"
             />
             <label
@@ -45,7 +51,9 @@ const Contact = () => {
               Message
             </label>
             <textarea
-              name=""
+              name="message"
+              required
+              autoComplete="off"
               id=""
               cols="5"
               rows="4"
