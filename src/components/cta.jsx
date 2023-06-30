@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const CTA = () => {
   return (
@@ -8,7 +9,7 @@ const CTA = () => {
         Talk to us today
       </h3>
       <button className="btn bg-orange-400 hover:bg-orange-500 text-white px-5 text-md">
-        Get Started
+        <Link to="/contact">Get Started</Link>
       </button>
     </div>
   );
