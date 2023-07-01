@@ -7,7 +7,6 @@ import { createContext,useEffect, useReducer } from "react";
 import axios from "axios";
 import reducer from '../reducers/productReducer';
 
-const AppContext = createContext();
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -17,6 +16,7 @@ const initialState = {
     products: [],
     featureProducts: []
 }
+const AppContext = createContext(initialState);
 
 const AppProvider = ({children}) =>{
 
@@ -34,7 +34,11 @@ const AppProvider = ({children}) =>{
     }
 
     useEffect(()=>{
-        getProducts(API);
+        let products = async()=>{
+            await getProducts(API);
+        } 
+        products();
+        console.log(state);
     },[]);
 
     return <AppContext.Provider value={{...state}}>

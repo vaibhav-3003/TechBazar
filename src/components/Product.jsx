@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Product = (e) => {
     const {id,name,image,price,category} = e;
+
+    const formatPrice = (price)=>{
+      return Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 2,
+      }).format(price / 100); 
+    }
+
   return (
     <Link to={`/singleProduct/${id}`}>
       <div className="card bg-base-100 shadow-xl hover:scale-105 transition-all duration-300">
@@ -13,7 +22,7 @@ const Product = (e) => {
           <h2 className="card-title">{name}!</h2>
           <div className="w-full flex justify-between items-center">
             <div className="badge badge-outline">{category}</div>
-            <h3 className="text-orange-400">{price}</h3>
+            <h3 className="text-orange-400">{formatPrice(price)}</h3>
           </div>
           <div className="card-actions justify-end">
             <Link to={`/singleProduct/${id}`}>

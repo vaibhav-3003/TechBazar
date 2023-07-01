@@ -13,7 +13,6 @@ const ProductReducer = (state,action)=>{
             }
         case "SET_API_DATA":
             const featuredData = action.payload.filter((e)=> e.featured === true);
-
             return {
                 ...state,
                 isLoading:false,
