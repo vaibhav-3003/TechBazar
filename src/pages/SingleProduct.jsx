@@ -5,6 +5,7 @@ import { AppContext } from '../context/ProductContext';
 import FormatPrice from '../helper/FormatPrice';
 import {TbTruckDelivery} from 'react-icons/tb'
 import ProductImages from '../components/ProductImages';
+import Star from '../components/Star';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -46,7 +47,7 @@ const SingleProduct = () => {
       <div className="mb-10 w-full">
         <div className="w-11/12 lg:w-4/5 flex flex-col md:flex-row mx-auto">
           <div className="w-full md:w-1/2 flex justify-center items-center">
-            <ProductImages images={image}/>
+            {image && <ProductImages images={image}/>}
           </div>
           <div className="p-2 w-full md:w-1/2">
             <div className="w-full mb-4 flex justify center items-center">
@@ -54,8 +55,7 @@ const SingleProduct = () => {
               <span className="badge ml-2">{category}</span>
             </div>
             <div className="w-full">
-              <p className="mb-4">{stars}</p>
-              <p className="mb-4">{reviews} reviews</p>
+              <Star stars={stars} reviews={reviews}/>
               <p className="mb-4 font-semibold">
                 MRP :
                 <del>
