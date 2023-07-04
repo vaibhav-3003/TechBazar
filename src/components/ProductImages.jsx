@@ -7,12 +7,12 @@ const ProductImages = ({images}) => {
         <div className='w-full'>
             <img src={mainImage.url} alt={images[0].fileName} />
         </div>
-      <div className='flex justify-center items-center w-full py-4'>
+      <div className='flex justify-center items-center w-full py-4 gap-6'>
         {
             images.map((e,i)=>{
                 return (
                     <figure>
-                        <img src={e.url} alt={e.fileName} key={i} className='w-16 h-10 mr-4 hover:cursor-pointer' 
+                        <img src={e.url} alt={e.fileName} key={i} className='w-16 h-10 hover:cursor-pointer' 
                         onClick={()=>setMainImage(e)}/>
                     </figure>
                 )
