@@ -6,6 +6,7 @@ import FormatPrice from '../helper/FormatPrice';
 import {TbTruckDelivery} from 'react-icons/tb'
 import ProductImages from '../components/ProductImages';
 import Star from '../components/Star';
+import AddToCart from '../components/AddToCart';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -67,7 +68,7 @@ const SingleProduct = () => {
               </p>
               <p className="text-justify mb-4">{description}</p>
 
-              <div className="w-full flex justify-between mb-4 pt-2 border-b border-gray-800">
+              <div className="w-full flex justify-between mb-4 pt-2 border-b">
                 <div className="flex flex-col justify-center items-center">
                   <div className="p-2 w-fit rounded-full bg-gray-200">
                     <TbTruckDelivery className="text-lg font-bold" />
@@ -94,7 +95,7 @@ const SingleProduct = () => {
                 </div>
               </div>
 
-              <p className="mb-4">
+              <p className="py-3">
                 Available :{" "}
                 {stock > 0 ? (
                   <span className="text-md font-semibold text-green-500">
@@ -107,9 +108,12 @@ const SingleProduct = () => {
                 )}
               </p>
 
-              <p>
+              <p className='py-3 border-b-2 border-gray-800'>
                 Brand : <span className="font-semibold">{company}</span>
               </p>
+              
+              {stock > 0 && <AddToCart product={singleProduct}/> }
+              
             </div>
           </div>
         </div>
