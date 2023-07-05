@@ -1,6 +1,6 @@
 import React, { useContext} from 'react'
 import { AppContext } from '../context/ProductContext';
-import Product from '../components/Product';
+import FeatureProduct from './FeatureProduct';
 
 const FeatureProducts = () => {
     
@@ -20,7 +20,7 @@ const FeatureProducts = () => {
           <div className='w-full grid grid-cols-1 md:grid-cols-2 items-center lg:grid-cols-3 gap-8 auto-cols-fr'>
             {
               featuredProducts && featuredProducts.map((e)=>{
-                return <Product key={e.id} {...e} />;
+                return <FeatureProduct key={e.id} {...e} />;
               })
             }
 

@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import FormatPrice from '../helper/FormatPrice';
 
-const Product = (e) => {
+const FeatureProduct = (e) => {
     const {id,name,image,price,category} = e;
 
   return (
     <Link to={`/singleProduct/${id}`}>
       <div className="card bg-base-100 shadow-xl hover:scale-105 transition-all duration-300">
         <figure>
-          <img src={image} alt={category}/>
+          <img src={image} alt={category} className='w-fit h-30'/>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}!</h2>
@@ -30,4 +30,4 @@ const Product = (e) => {
   );
 }
 
-export default Product
+export default FeatureProduct
