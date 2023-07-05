@@ -52,7 +52,6 @@ const AppProvider = ({children}) =>{
             await getProducts(API);
         } 
         products();
-        console.log(state);
     },[]);
 
     return <AppContext.Provider value={{...state,getSingleProduct}}>
