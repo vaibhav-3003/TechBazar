@@ -15,7 +15,7 @@ const Products = () => {
           <FilterSection />
         </div>
 
-        <section className='w-4/5 border'>
+        <section className='w-4/5'>
           <div>
             <Sort />
           </div>

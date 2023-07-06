@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const ListView = ({products}) => {
   return (
-    <div className='grid grid-cols-1 gap-8 pt-20 pb-10'>
+    <div className='grid grid-cols-1 gap-8 py-10'>
       {
         products.map((e)=>{
           const {id,name,image,price,description} = e;
 
           return (
-            <div className="flex gap-4 shadow-md">
+            <div className="flex gap-4 shadow-lg p-2 rounded-lg border">
               <div className="w-2/5 h-full flex justify-center items-center">
                 <figure>
                   <img src={image} alt={name} className='w-full h-full bg-cover'/>
