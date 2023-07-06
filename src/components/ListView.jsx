@@ -27,7 +27,7 @@ const ListView = ({products}) => {
                   {description.slice(0, 99)}...
                 </p>
                 
-                <Link className='w-full flex justify-end'>
+                <Link className='w-full flex justify-end' to={`/singleProduct`}>
                   <button className="btn bg-orange-500 hover:bg-orange-400 justify-end text-white">Buy Now</button>
                 </Link>
                 
