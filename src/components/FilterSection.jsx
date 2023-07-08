@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { FilterContext } from '../context/FilterContext'
+import { FaCheck } from 'react-icons/fa'
 
 const FilterSection = () => {
   const {
-    filters:{text,category},
+    filters:{text,category,color},
     all_products,
     updateFilterValue
   } = useContext(FilterContext)
@@ -13,8 +14,14 @@ const FilterSection = () => {
       return e[field];
     });
 
-    newValue = ["All",...new Set(newValue)]
-    return newValue
+    
+    
+    if(field === 'colors'){
+      return newValue = ["All",...new Set([].concat(...newValue))];
+    }else{
+      return newValue = ["All",...new Set(newValue)]
+    }
+
     // console.log(newValue)
   }
 
@@ -22,6 +29,8 @@ const FilterSection = () => {
   const categoryData = getUniqueData(all_products,"category");
 
   const companyData = getUniqueData(all_products,"company");
+
+  const colorsData = getUniqueData(all_products,"colors");
 
   return (
     <div className="w-full h-full py-4 px-3">
@@ -63,7 +72,7 @@ const FilterSection = () => {
         </div>
       </div>
 
-      <div className="py-2">
+      <div className="py-4">
         <h3 className="font-semibold w-full mb-4">Company</h3>
         <form action="#">
           <select
@@ -74,13 +83,49 @@ const FilterSection = () => {
           >
             {companyData.map((e, i) => {
               return (
-                <option key={i} value={e} name="company" className='capitalize'>
+                <option key={i} value={e} name="company" className="capitalize">
                   {e}
                 </option>
               );
             })}
           </select>
         </form>
+      </div>
+
+      <div className="py-4">
+        <h3 className="font-semibold mb-4">Colors</h3>
+        <div className='flex py-1 justify-between items-center'>
+          {colorsData.map((currColor, index) => {
+            if(currColor.toLowerCase() === 'all'){
+              return <button
+                value={currColor.toLowerCase()}
+                name="color"
+                key={index}
+                onClick={updateFilterValue}
+              >
+                All
+              </button>;
+            }
+            return (
+              <button
+                className={
+                  color === currColor
+                    ? `rounded-full p-3`
+                    : `rounded-full p-3 opacity-75 hover:opacity-100`
+                }
+                value={currColor}
+                name="color"
+                style={{ backgroundColor: currColor }}
+                key={index}
+                onClick={updateFilterValue}
+              >
+                {color === currColor ? (
+                  <FaCheck className="text-gray-500 text-sm" />
+                ) : null}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
