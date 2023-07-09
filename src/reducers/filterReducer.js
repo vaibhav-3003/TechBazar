@@ -1,10 +1,14 @@
 const filterReducer = (state,action)=>{
     switch (action.type) {
       case "LOAD_FILTER_PRODUCTS":
+        let priceArr = action.payload.map((e) => e.price);
+        let maxPrice = Math.max(...priceArr);
+
         return {
           ...state,
           filter_products: [...action.payload],
           all_products: action.payload,
+          filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice },
         };
 
       case "SET_GRID_VIEW":
@@ -65,35 +69,60 @@ const filterReducer = (state,action)=>{
         let { all_products } = state;
         let tempFilterProducts = [...all_products];
 
-        const { text,category,company,color } = state.filters;
+        const { text, category, company, color, price } = state.filters;
 
         if (text) {
           tempFilterProducts = tempFilterProducts.filter((e) => {
             return e.name.toLowerCase().includes(text);
           });
         }
-        console.log(category,company,color)
-        if(category.toLowerCase()!=="all"){
+
+        if (category.toLowerCase() !== "all") {
           tempFilterProducts = tempFilterProducts.filter((e) => {
             return e.category.toLowerCase() === category.toLowerCase();
           });
         }
 
-        if(company.toLowerCase()!=="all"){
+        if (company.toLowerCase() !== "all") {
           tempFilterProducts = tempFilterProducts.filter((e) => {
             return e.company.toLowerCase() === company.toLowerCase();
           });
         }
 
-        if(color!=="all"){
+        if (color !== "all") {
           tempFilterProducts = tempFilterProducts.filter((e) => {
             return e.colors.includes(color);
           });
         }
 
+        if (price === 0) {
+          tempFilterProducts = tempFilterProducts.filter((e) => {
+            return e.price === price;
+          });
+        } else {
+          tempFilterProducts = tempFilterProducts.filter((e) => {
+            return e.price <= price;
+          });
+        }
+
         return {
           ...state,
-          filter_products: [...tempFilterProducts],
+          filter_products: tempFilterProducts,
+        };
+
+      case "CLEAR_FILTERS":
+        return {
+          ...state,
+          filters: {
+            ...state.filters,
+            text: "",
+            category: "All",
+            company: "all",
+            color: "all",
+            maxPrice: state.filters.maxPrice,
+            price: state.filters.maxPrice,
+            minPrice: 0,
+          },
         };
 
       default:

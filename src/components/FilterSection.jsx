@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { FilterContext } from '../context/FilterContext'
 import { FaCheck } from 'react-icons/fa'
+import FormatPrice from '../helper/FormatPrice'
 
 const FilterSection = () => {
   const {
-    filters:{text,category,color},
+    filters:{text,category,color,maxPrice,minPrice,price},
     all_products,
-    updateFilterValue
+    updateFilterValue,
+    clearFilters
   } = useContext(FilterContext)
 
   const getUniqueData = (data, field)=>{
@@ -94,17 +96,19 @@ const FilterSection = () => {
 
       <div className="py-4">
         <h3 className="font-semibold mb-4">Colors</h3>
-        <div className='flex py-1 justify-between items-center'>
+        <div className="flex py-1 justify-between items-center">
           {colorsData.map((currColor, index) => {
-            if(currColor.toLowerCase() === 'all'){
-              return <button
-                value={currColor.toLowerCase()}
-                name="color"
-                key={index}
-                onClick={updateFilterValue}
-              >
-                All
-              </button>;
+            if (currColor.toLowerCase() === "all") {
+              return (
+                <button
+                  value={currColor.toLowerCase()}
+                  name="color"
+                  key={index}
+                  onClick={updateFilterValue}
+                >
+                  All
+                </button>
+              );
             }
             return (
               <button
@@ -126,6 +130,21 @@ const FilterSection = () => {
             );
           })}
         </div>
+      </div>
+
+      <div className="py-4">
+        <h3 className="font-semibold mb-4">Price</h3>
+        <p className='mb-3'>
+          <FormatPrice price={price} />
+        </p>
+        <input type="range" min={minPrice} max={maxPrice} value={price} className="range range-info range-xs" 
+        name='price'
+        onChange={updateFilterValue}/>
+      </div>
+
+      <div className='py-6'>
+          <button className='btn bg-red-500 hover:bg-red-400 text-red-800'
+          onClick={clearFilters}>Clear Filters</button>
       </div>
     </div>
   );
