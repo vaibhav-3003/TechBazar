@@ -10,7 +10,7 @@ const Cart = () => {
         <h2 className='text-xl md:text-2xl lg:text-4xl font-bold py-4'>Shopping Cart</h2>
         {
           cart.map((data)=>{
-            return <CartItem data={data}/>
+            return <CartItem key={data.id} data={data}/>
           })
         }
         
