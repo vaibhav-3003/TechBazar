@@ -53,7 +53,26 @@ const cartReducer = (state,action)=>{
                 ...state,
                 cart:updatedCart
             }
-    
+            
+        case "UPDATE_AMOUNT":
+            let updatedProduct = state.cart.map((e)=>{
+                if(e.id === action.payload.id){
+                    let updatedAmount = action.payload.value;
+
+                    return {
+                        ...e,
+                        amount: updatedAmount
+                    }
+                }else{
+                    return e
+                }
+            })
+
+            return {
+                ...state,
+                cart: updatedProduct
+            }
+
         default:
             return state;
     }

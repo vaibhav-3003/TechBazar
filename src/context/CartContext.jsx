@@ -35,12 +35,18 @@ const CartProvider = ({children})=>{
         dispatch({type: "REMOVE_ITEM", payload: {id}});
     }
 
+    const updateAmount = (event,id)=>{
+        let value = event.target.value;
+        // console.log(value);
+        dispatch({type: "UPDATE_AMOUNT", payload: {id,value}})
+    }
+
     // add the data in local storage
     useEffect(()=>{
         localStorage.setItem("TechBazarCart",JSON.stringify(state.cart));
     },[state.cart])
 
-    return <CartContext.Provider value={{...state,addToCart,removeItem}}>
+    return <CartContext.Provider value={{...state,addToCart,removeItem,updateAmount}}>
         {children}
     </CartContext.Provider>
 }
