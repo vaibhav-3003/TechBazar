@@ -32,9 +32,12 @@ const CartItem = ({data}) => {
           </div>
           <div className="flex flex-col gap-2">
             <select name="" id="" className='px-3 py-2 rounded-md focus:ring-2 focus:ring-orange-500 outline-none border hover:cursor-pointer'
-            onClick={(event)=>updateAmount(event,data.id)}>
+            onChange={(event)=>updateAmount(event,data.id)}
+            value={data.amount}
+            >
               {quantity.map((e, i) => {
-                return <option key={i} value={e} selected={data.amount===e}>{e}</option>;
+                console.log(data.amount)
+                return <option key={i} value={e}>{e}</option>;
               })}
             </select>
             

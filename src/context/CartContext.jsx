@@ -15,9 +15,9 @@ const getLocalCartData = ()=>{
 
 const initialState = {
     cart: getLocalCartData(),
-    total_item: "",
-    total_amount: "",
-    shipping_fee: 50000,
+    total_item: 0,
+    total_price: 0,
+    shipping_fee: 5000,
 };
 
 const CartProvider = ({children})=>{
@@ -37,12 +37,13 @@ const CartProvider = ({children})=>{
 
     const updateAmount = (event,id)=>{
         let value = event.target.value;
-        // console.log(value);
         dispatch({type: "UPDATE_AMOUNT", payload: {id,value}})
     }
 
     // add the data in local storage
     useEffect(()=>{
+        dispatch({type: "CART_TOTAL_ITEM"})
+        dispatch({type: "CART_TOTAL_PRICE"})
         localStorage.setItem("TechBazarCart",JSON.stringify(state.cart));
     },[state.cart])
 
