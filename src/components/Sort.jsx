@@ -35,7 +35,7 @@ const Sort = () => {
       </div>
 
       <div>
-        <p className="text-md font-semibold">{`${filter_products.length} Products Available`}</p>
+        <p className="text-md font-semibold absolute left-full md:relative md:left-0">{`${filter_products.length} Products Available`}</p>
       </div>
 
       

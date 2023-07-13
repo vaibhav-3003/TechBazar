@@ -3,9 +3,13 @@ import { useContext } from 'react';
 import { NavLink,Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import FormatPrice from '../helper/FormatPrice';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Header = () => {
   const {total_item,total_price} = useContext(CartContext)
+
+  const { loginWithRedirect,logout,isAuthenticated } = useAuth0();
+
   // console.log(total_item)
   return (
     <div className="navbar bg-orange-50 shadow-lg absolute z-20">
@@ -43,9 +47,23 @@ const Header = () => {
             <li>
               <Link to="/contact">CONTACT</Link>
             </li>
-            <button className="btn border bg-orange-400 mt-2 rounded-md hover:bg-orange-500 font-semibold md:absolute md:-left-full text-white">
-              LOG IN
-            </button>
+            {isAuthenticated ? (
+              <button
+                className="btn border bg-orange-400 mt-2 rounded-md hover:bg-orange-500 font-semibold md:absolute md:-left-full text-white"
+                onClick={() =>
+                  logout({ logoutParams: { returnTo: window.location.origin } })
+                }
+              >
+                Log out
+              </button>
+            ) : (
+              <button
+                className="btn border bg-orange-400 mt-2 rounded-md hover:bg-orange-500 font-semibold md:absolute md:-left-full text-white"
+                onClick={() => loginWithRedirect()}
+              >
+                Log in
+              </button>
+            )}
           </ul>
         </div>
       </div>
@@ -56,9 +74,23 @@ const Header = () => {
       </div>
       <div className="navbar-end mr-5">
         <div>
-          <button className="btn bg-orange-400 px-10 rounded-md mr-5 uppercase font-semibold text-white hover:bg-orange-500 absolute -left-full sm:relative sm:left-0">
-            Log in
-          </button>
+          {isAuthenticated ? (
+            <button
+              className="btn bg-orange-400 px-10 rounded-md mr-5 uppercase font-semibold text-white hover:bg-orange-500 absolute -left-full sm:relative sm:left-0"
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
+            >
+              Log out
+            </button>
+          ) : (
+            <button
+              className="btn bg-orange-400 px-10 rounded-md mr-5 uppercase font-semibold text-white hover:bg-orange-500 absolute -left-full sm:relative sm:left-0"
+              onClick={() => loginWithRedirect()}
+            >
+              Log in
+            </button>
+          )}
         </div>
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -88,9 +120,11 @@ const Header = () => {
           >
             <div className="card-body">
               <span className="font-bold text-lg">{total_item} Items</span>
-              <span className="text-info">Subtotal: <FormatPrice price={total_price}/></span>
+              <span className="text-info">
+                Subtotal: <FormatPrice price={total_price} />
+              </span>
               <div className="card-actions">
-                <Link to="/cart" className='w-full'>
+                <Link to="/cart" className="w-full">
                   <button className="btn bg-orange-400 w-full hover:bg-orange-500 text-white">
                     View cart
                   </button>
